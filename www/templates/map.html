@@ -1,0 +1,208 @@
+<ion-view view-title="Map">
+
+  <ion-content class="padding">
+
+    <form ng-submit="addToMakikisilong(pickup, dropoff)">
+      <div class="list absolute-position width-full" ng-show="!userData.payong">
+        <label class="item item-input item-select width-full">
+          <div class="input-label">
+            Pick-Up
+          </div>
+          <select ng-model="pickup" name="pickup" class="width-full">
+            <option ng-repeat="bldg in buildings" value="{{ bldg }}">{{ bldg }}</option>
+          </select>
+        </label>
+        <label class="item item-input item-select width-full">
+          <div class="input-label">
+            Drop Off
+          </div>
+          <select ng-model="dropoff" name="dropoff" class="width-full">
+            <option ng-repeat="bldg in buildings" value="{{ bldg }}">{{ bldg }}</option>
+          </select>
+        </label>
+      </div>
+
+      <button class="button pasilong-button" ng-show="!userData.payong" ng-click="openModalMakikisilong();" type="submit"><i class="icon ion-umbrella"></i></button>
+    </form>
+    <map on-create="mapCreated(map)"></map>
+  </ion-content>
+
+  <script id="makikisilong-modal.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-content>
+        <div class="text-center">
+          <img src="img/spinner.gif" alt="" width="75%">
+          <h2>We're looking for your pasilonger.</h2>
+        </div>
+      </ion-content>
+      <a class="button width-full button-assertive button-bottom font-sixteen" type="button" ng-click="closeModalMakikisilong(); removeFromMakikisilong()">Cancel</a>
+    </ion-modal-view>
+  </script>
+
+  <script id="looking.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-content>
+        <div class="card card-width">
+          <div class="item item-divider bg-white dark light">
+            <h2 class="bold dark text-center margin-botop font-sixteen Raleway">You are Looking For:</h2>
+          </div>
+          <div class="item item-text-wrap">
+            <ion-list >
+              <ion-item class="row item-borderless">
+                <div class="col col-40 padding-vertical">
+                  <h2 class="dark-grey Roboto-regular">Username:</h2>
+                </div>
+                <div class="col padding-vertical overflow">
+                  {{lookingFor.data.username}}
+                </div>
+              </ion-item>
+              <ion-item class="row item-borderless">
+                <div class="col col-40 padding-vertical">
+                  <h2 class="dark-grey Roboto-regular">Phone:</h2>
+                </div>
+                <div class="col padding-vertical overflow">
+                  {{lookingFor.data.phone}}
+                </div>
+              </ion-item>
+              <ion-item class="row item-borderless">
+                <div class="col col-40 padding-vertical">
+                  <h2 class="dark-grey Roboto-regular">Pickup:</h2>
+                </div>
+                <div class="col padding-vertical overflow">
+                  {{lookingFor.pickup}}
+                </div>
+              </ion-item>
+              <ion-item class="row item-borderless">
+                <div class="col col-40 padding-vertical">
+                  <h2 class="dark-grey Roboto-regular">Dropoff:</h2>
+                </div>
+                <div class="col padding-vertical overflow">
+                  {{lookingFor.dropoff}}
+                </div>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+      </ion-content>
+      <a class="button width-full button-balanced button-bottom2 font-sixteen" type="button" ng-click="changeLinkStatus(); closeModalLooking();">Pick Up</a>
+      <a class="button width-full button-assertive button-bottom font-sixteen" type="button" ng-click="closeModalLooking(); removeLink()">Cancel</a>
+    </ion-modal-view>
+  </script>
+
+  <script id="waiting.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-content>
+        <div class="card card-width">
+          <div class="item item-divider bg-white dark light">
+            <h2 class="bold dark text-center margin-botop font-sixteen Raleway">You are Waiting For:</h2>
+          </div>
+          <div class="item item-text-wrap">
+            <ion-list >
+              <ion-item class="row item-borderless">
+                <div class="col col-40 padding-vertical">
+                  <h2 class="dark-grey Roboto-regular">Username:</h2>
+                </div>
+                <div class="col padding-vertical overflow">
+                  {{waitingFor.username}}
+                </div>
+              </ion-item>
+              <ion-item class="row item-borderless">
+                <div class="col col-40 padding-vertical">
+                  <h2 class="dark-grey Roboto-regular">Phone:</h2>
+                </div>
+                <div class="col padding-vertical overflow">
+                  {{waitingFor.phone}}
+                </div>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+      </ion-content>
+      <a class="button width-full button-assertive button-bottom font-sixteen" type="button" ng-click="closeModalWaiting(); removeLink()">Cancel</a>
+    </ion-modal-view>
+  </script>
+
+  <script id="onway2.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-content>
+        <div class="card card-width">
+          <div class="item item-divider bg-white dark light">
+            <h2 class="bold dark text-center margin-botop font-sixteen Raleway">You are on your way with:</h2>
+          </div>
+          <div class="item item-text-wrap">
+            <ion-list >
+              <ion-item class="row item-borderless">
+                <div class="col col-40 padding-vertical">
+                  <h2 class="dark-grey Roboto-regular">Username:</h2>
+                </div>
+                <div class="col padding-vertical overflow">
+                  {{waitingFor.username}}
+                </div>
+              </ion-item>
+              <ion-item class="row item-borderless">
+                <div class="col col-40 padding-vertical">
+                  <h2 class="dark-grey Roboto-regular">Phone:</h2>
+                </div>
+                <div class="col padding-vertical overflow">
+                  {{waitingFor.phone}}
+                </div>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+				<div class="text-center"><img src="img/onway.gif" alt="" width="75%"></div>
+      </ion-content>
+    </ion-modal-view>
+  </script>
+
+	<script id="onway1.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-content>
+        <div class="card card-width">
+          <div class="item item-divider bg-white dark light">
+            <h2 class="bold dark text-center margin-botop font-sixteen Raleway">You are on your way with:</h2>
+          </div>
+          <div class="item item-text-wrap">
+            <ion-list >
+              <ion-item class="row item-borderless">
+                <div class="col col-40 padding-vertical">
+                  <h2 class="dark-grey Roboto-regular">Username:</h2>
+                </div>
+                <div class="col padding-vertical overflow">
+                  {{lookingFor.data.username}}
+                </div>
+              </ion-item>
+              <ion-item class="row item-borderless">
+                <div class="col col-40 padding-vertical">
+                  <h2 class="dark-grey Roboto-regular">Phone:</h2>
+                </div>
+                <div class="col padding-vertical overflow">
+                  {{lookingFor.data.phone}}
+                </div>
+              </ion-item>
+              <ion-item class="row item-borderless">
+                <div class="col col-40 padding-vertical">
+                  <h2 class="dark-grey Roboto-regular">Pickup:</h2>
+                </div>
+                <div class="col padding-vertical overflow">
+                  {{lookingFor.pickup}}
+                </div>
+              </ion-item>
+              <ion-item class="row item-borderless">
+                <div class="col col-40 padding-vertical">
+                  <h2 class="dark-grey Roboto-regular">Dropoff:</h2>
+                </div>
+                <div class="col padding-vertical overflow">
+                  {{lookingFor.dropoff}}
+                </div>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+				<div class="text-center"><img src="img/onway.gif" alt="" width="75%"></div>
+      </ion-content>
+      <a class="button width-full button-assertive button-bottom font-sixteen" type="button" ng-click="closeModalOnway1(); dropoff()">Drop Off</a>
+    </ion-modal-view>
+  </script>
+
+</ion-view>

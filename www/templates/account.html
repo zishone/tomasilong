@@ -1,0 +1,51 @@
+<ion-view view-title="Account">
+  <ion-content>
+    <ion-toggle ng-model="userData.payong" toggle-class="toggle-calm" ng-change="changePayongStatus()">Do you have payong?</ion-toggle>
+    
+    <div class="card card-width">
+      <div class="item item-divider bg-white dark light">
+        <h2 class="bold dark text-center margin-botop font-sixteen Raleway">Personal Information</h2>
+      </div>
+      <div class="item item-text-wrap">
+        <ion-list >
+          <ion-item class="row item-borderless">
+            <div class="col col-40 padding-vertical">
+              <h2 class="dark-grey Roboto-regular">Username:</h2>
+            </div>
+            <div class="col padding-vertical overflow">
+              {{userData.username}}
+            </div>
+          </ion-item>
+          <ion-item class="row item-borderless">
+            <div class="col col-40 padding-vertical">
+              <h2 class="dark-grey Roboto-regular">Gender:</h2>
+            </div>
+            <div class="col padding-vertical overflow">
+              {{userData.gender}}
+            </div>
+          </ion-item>
+          <ion-item class="row item-borderless">
+            <div class="col col-40 padding-vertical">
+              <h2 class="dark-grey Roboto-regular">Email:</h2>
+            </div>
+            <div class="col padding-vertical overflow">
+              {{userData.email}}
+            </div>
+          </ion-item>
+          <ion-item class="row item-borderless">
+            <div class="col col-40 padding-vertical">
+              <h2 class="dark-grey Roboto-regular">Phone:</h2>
+            </div>
+            <div class="col padding-vertical overflow">
+              {{userData.phone}}
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="button" name="button" class="button button-assertive" ng-click="doLogout()">Sign Out</button>
+    </div>
+  </ion-content>
+</ion-view>

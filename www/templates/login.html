@@ -1,0 +1,26 @@
+<ion-modal-view>
+  <ion-content>
+      <div class="list">
+        <label class="item text-center">
+          <img src="img/payong.png" alt="" width="50%">
+        </label>
+        <label class="item text-center">
+          <h4>Tomasilong</h4>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="email" ng-model="loginData.email">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="loginData.password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" ng-click="doLogin(); $event.preventDefault();" type="button">Log in</button>
+        </label>
+      </div>
+      <div class="text-center">
+        <h4><a href="#/register">No account yet? Register now!</a></h4>
+      </div>
+  </ion-content>
+</ion-modal-view>

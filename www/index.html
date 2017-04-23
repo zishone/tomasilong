@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- google maps javascript -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAozGlk_QP8QrKeqfPhIYDHXeSlhH-pUO8"></script>
+
+    <!-- firebase & angularfire libraries -->
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/angularfire/dist/angularfire.min.js"></script>
+    <script type="text/javascript">
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDQrnUTnyI53jOkhgk0QBRTJFSGm70aER0",
+        authDomain: "tomasilong-f5156.firebaseapp.com",
+        databaseURL: "https://tomasilong-f5156.firebaseio.com",
+        storageBucket: "tomasilong-f5156.appspot.com",
+        messagingSenderId: "788622296705"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <!-- your app's js -->
+    <script src="js/app.js" charset="utf-8"></script>
+
+    <script src="js/constants/constants.js" charset="utf-8"></script>
+    <script src="js/constants/buildings.constants.js" charset="utf-8"></script>
+
+    <script src="js/config/config.js" charset="utf-8"></script>
+    <script src="js/config/routes.config.js" charset="utf-8"></script>
+
+    <script src="js/controllers/controllers.js" charset="utf-8"></script>
+    <script src="js/controllers/app.controller.js" charset="utf-8"></script>
+    <script src="js/controllers/login.controller.js" charset="utf-8"></script>
+    <script src="js/controllers/register.controller.js" charset="utf-8"></script>
+    <script src="js/controllers/map.controller.js" charset="utf-8"></script>
+    <script src="js/controllers/account.controller.js" charset="utf-8"></script>
+
+    <script src="js/services/services.js" charset="utf-8"></script>
+    <script src="js/services/fire.service.js" charset="utf-8"></script>
+    <script src="js/services/auth.service.js" charset="utf-8"></script>
+    <script src="js/services/user.service.js" charset="utf-8"></script>
+    <script src="js/services/markers.service.js" charset="utf-8"></script>
+
+    <script src="js/directives/directives.js" charset="utf-8"></script>
+    <script src="js/directives/map.directive.js" charset="utf-8"></script>
+  </head>
+  <body ng-app="tomasilong" ng-controller="AppCtrl">
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>
