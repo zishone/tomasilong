@@ -9,6 +9,9 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+		<!--<access origin="https://*.google-analytics.com" />
+		<access origin="https://*.googleapis.com" />
+		<access origin="https://*.firebaseio.com" />-->
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
