@@ -2,4 +2,4 @@
 An umbrella sharing app for the Thomasian community.
 
 ## Awards
-JPCS-UST App Jam 2015 1st Place Winner
+JPCS-UST AppJam 2016 - 1st Place Winner
